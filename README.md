@@ -11,6 +11,10 @@ cd tag_pointer_fun
 gcc tagged_pointers 
 ./a.out
 ```
+
+# Example 
+![image](https://github.com/user-attachments/assets/5287fa8b-5caf-4ff3-88c4-7607331a4141)
+
 # Pointer Tagging in C
 
 This program demonstrates how to add, remove, and read a 16-bit "tag" from a pointer using bitwise operations.
