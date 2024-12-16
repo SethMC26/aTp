@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/50ed4bf9-1e18-436b-9eb5-533a4b5dde91)
+
 Readme from chatGPT cuz im lazy
 # Usage
 ~~if your not on a Linux system god help you~~ 
