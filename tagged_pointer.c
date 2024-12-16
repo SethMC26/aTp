@@ -31,7 +31,7 @@ void print_ptr(void* ptr) {
  * 
  * @returns void * new pointer with tag
  */
-void* set_tag(void* ptr, short tag) {
+void* set_tag(void* ptr, unsigned short tag) {
     //get pointer as a value we can manipulate
     uintptr_t ptr_val = (uintptr_t)ptr;
 
@@ -55,7 +55,7 @@ void* remove_tag(void* ptr) {
     uintptr_t ptr_val = (uintptr_t)ptr;
     
     int ptr_len = (sizeof(uintptr_t) * 8);
-    int tag_len = (sizeof(short) * 8);
+    int tag_len = (sizeof(unsigned short) * 8);
 
     //create mask to reset bits in the pointer field (bits 48 to 63)
     uintptr_t mask = ~((uintptr_t)0xFFFF << (ptr_len - tag_len));
@@ -70,7 +70,7 @@ void* remove_tag(void* ptr) {
  * 
  * @param ptr void * pointer to read tag of 
  */
-short read_tag(void* ptr) {
+unsigned short read_tag(void* ptr) {
     uintptr_t ptr_val = (uintptr_t)ptr;
     
     int ptr_len = (sizeof(uintptr_t) * 8);
@@ -84,7 +84,7 @@ short read_tag(void* ptr) {
     //shift bits back right so we can get correct bits 
     ptr_val = ptr_val >> (ptr_len - tag_len);
     //we can saftey cast to a short since all truncated bits got zeroed out by mask
-    return (short) ptr_val;
+    return (unsigned short) ptr_val;
 }   
 
 int main() {
@@ -95,7 +95,7 @@ int main() {
 
     int x = 5; 
     int* ptr = &x; 
-    short test_tag = 42;
+    unsigned short test_tag = 0xFFFF;
 
     printf("Orginal pointer\n");
     print_ptr(ptr);
@@ -107,8 +107,8 @@ int main() {
 
     printf("\nTag from pointer\n");
     //read tag from pointer
-    short tag = read_tag(tag_ptr);
-    printf("Tag is %hd\n", tag);
+    unsigned short tag = read_tag(tag_ptr);
+    printf("Tag is %hu\n", tag);
 
     printf("\nPointer with tag removed\n");
     //remove tag so we can derefrence pointer
